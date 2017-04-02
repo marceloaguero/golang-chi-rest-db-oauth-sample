@@ -2,8 +2,8 @@ package db
 
 import (
 	"errors"
-	"github.com/adorsys/golang-chi-rest-db-oauth-sample/model"
 	_ "github.com/lib/pq"
+	"github.com/marceloaguero/golang-chi-rest-db-oauth-sample/model"
 	"log"
 )
 

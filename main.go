@@ -42,19 +42,19 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"github.com/adorsys/golang-chi-rest-db-oauth-sample/config"
-	"github.com/adorsys/golang-chi-rest-db-oauth-sample/db"
-	"github.com/adorsys/golang-chi-rest-db-oauth-sample/migration"
-	"github.com/adorsys/golang-chi-rest-db-oauth-sample/model"
-	"github.com/goware/jwtauth"
+	"log"
+	"net/http"
+	"strconv"
+
+	"github.com/marceloaguero/golang-chi-rest-db-oauth-sample/config"
+	"github.com/marceloaguero/golang-chi-rest-db-oauth-sample/db"
+	"github.com/marceloaguero/golang-chi-rest-db-oauth-sample/migration"
+	"github.com/marceloaguero/golang-chi-rest-db-oauth-sample/model"
 	_ "github.com/mattes/migrate/driver/postgres"
 	"github.com/pressly/chi"
 	"github.com/pressly/chi/docgen"
 	"github.com/pressly/chi/middleware"
 	"github.com/pressly/chi/render"
-	"log"
-	"net/http"
-	"strconv"
 )
 
 var exportRoutes = flag.Bool("routes", false, "Generate router documentation")
@@ -88,9 +88,9 @@ func main() {
 		log.Fatal("Could not apply db migration", errors)
 	}
 
-	tokenAuth := jwtauth.New("HS256", []byte(config.Conf.Jwt.SignKey), nil)
-	r.Use(tokenAuth.Verifier)
-	r.Use(jwtauth.Authenticator)
+	//tokenAuth := jwtauth.New("HS256", []byte(config.Conf.Jwt.SignKey), nil)
+	//r.Use(tokenAuth.Verifier)
+	//r.Use(jwtauth.Authenticator)
 
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("root."))

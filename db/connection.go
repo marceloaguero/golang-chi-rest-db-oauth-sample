@@ -2,8 +2,9 @@ package db
 
 import (
 	"database/sql"
-	"github.com/adorsys/golang-chi-rest-db-oauth-sample/config"
 	"log"
+
+	"github.com/marceloaguero/golang-chi-rest-db-oauth-sample/config"
 )
 
 var Connection *sql.DB
